@@ -19,6 +19,7 @@
     "vue-draggable-plus": "^0.5.2",
     "vue-router": "^4.3.3",
     "vue-smooth-dnd": "^0.8.1",
+    "vue3-smooth-dnd": "^0.0.6",
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {

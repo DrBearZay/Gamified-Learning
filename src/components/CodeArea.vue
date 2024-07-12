@@ -1,25 +1,15 @@
 <template>
-  <!-- <div class="flex flex-col gap-2 p-4 w-[200px] max-h-[350px] m-auto bg-gray-500/5 rounded overflow-auto"
+  <div class="flex flex-col gap-2 p-4 w-[200px] max-h-[350px] m-auto bg-gray-500/5 rounded overflow-auto"
     ref="codeListEL">
     <div v-for="item in codeList" :key="item.id" class="cursor-move h-50px bg-gray-500/5 rounded p-3">
       {{ item.name }}
     </div>
-  </div> -->
-  <!-- <draggable v-model="codeList" class="max-h-[200px] overflow-auto w-[100px]" :animation="150" :scroll="true"
-    :forceAutoScrollFallback="true" :scrollSensitivity="80" :scrollSpeed="10"> -->
-  <draggable v-model="codeList" class="max-h-[200px] overflow-auto w-[100px]" :animation="150">
-    <template #item="{ element }">
-      <div class="list-group-item h-8 flex items-center">
-        {{ element.name }}
-      </div>
-    </template>
-  </draggable>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useDraggable } from 'vue-draggable-plus';
-import draggable from 'vuedraggable';
 
 const codeList = ref([
   {
