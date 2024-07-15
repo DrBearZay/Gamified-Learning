@@ -1,7 +1,12 @@
 <template>
   <div style="display: flex; justify-content: stretch; margin-top: 50px; margin-right: 50px">
-    <div style="margin-left: 50px; flex: 1">
-      <Container behaviour="copy" group-name="1" :get-child-payload="getChildPayload1">
+    <div style="margin-left: 50px">
+      <Container
+        behaviour="copy"
+        group-name="1"
+        :get-child-payload="getChildPayload1"
+        class="pb-6 bg-yellow-400"
+      >
         <Draggable v-for="item in items1" :key="item.id">
           <div class="draggable-item">
             {{ item.data }}
@@ -9,11 +14,13 @@
         </Draggable>
       </Container>
     </div>
-    <div style="margin-left: 50px; flex: 1">
+    <div style="margin-left: 50px">
       <Container
         group-name="1"
         :get-child-payload="getChildPayload2"
-        @drop="onDrop(items2, $event)"
+        @drop="onDrop2"
+        :remove-on-drop-out="true"
+        class="overflow-y-auto h-80 bg-yellow-400"
       >
         <Draggable v-for="item in items2" :key="item.id">
           <div class="draggable-item">
@@ -22,7 +29,7 @@
         </Draggable>
       </Container>
     </div>
-    <div style="margin-left: 50px; flex: 1">
+    <!-- <div style="margin-left: 50px;">
       <Container
         group-name="1"
         :get-child-payload="getChildPayload3"
@@ -34,14 +41,15 @@
           </div>
         </Draggable>
       </Container>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Container, Draggable } from 'vue3-smooth-dnd'
+import { ref } from 'vue';
+import { Container, Draggable } from 'vue3-smooth-dnd';
 
+// TODO item1里复制出来的id不能写死
 const items1 = ref([
   { id: 1, data: 'Princess Mononoke' },
   { id: 2, data: 'Spirited Away' },
@@ -50,22 +58,32 @@ const items1 = ref([
 ])
 
 const items2 = ref([
-  { id: 1, data: 'Princess Mononoke' },
-  { id: 2, data: 'Spirited Away' },
-  { id: 3, data: 'My Neighbor Totoro' },
-  { id: 4, data: "Howl's Moving Castle" }
+  { id: 1, data: 'Princess Mononoke2' },
+  { id: 2, data: 'Spirited Away2' },
+  { id: 3, data: 'My Neighbor Totoro2' },
+  { id: 4, data: "Howl's Moving Castle2" }
 ])
 
 const items3 = ref([
-  { id: 1, data: 'Princess Mononoke' },
-  { id: 2, data: 'Spirited Away' },
-  { id: 3, data: 'My Neighbor Totoro' },
-  { id: 4, data: "Howl's Moving Castle" }
+  { id: 1, data: 'Princess Mononoke3' },
+  { id: 2, data: 'Spirited Away3' },
+  { id: 3, data: 'My Neighbor Totoro3' },
+  { id: 4, data: "Howl's Moving Castle3" }
 ])
 
-const onDrop = (collection: any, dropResult: any) => {
+// const onDrop = (collection: any, dropResult: any) => {
+//   console.log('onDrop')
+//   // collection = applyDrag(collection, dropResult)
+// }
+
+type dropResultType = {
+  removedIndex: number
+  addedIndex: number
+  payload: any
+}
+const onDrop2 = (dropResult: dropResultType) => {
   console.log(dropResult)
-  collection.value = applyDrag(collection, dropResult)
+  items2.value = applyDrag(items2.value, dropResult)
 }
 
 const applyDrag = (arr: any, dragResult: any) => {
@@ -96,3 +114,9 @@ const getChildPayload3 = (index: number) => {
   return items3.value[index]
 }
 </script>
+
+<style lang="scss" scoped>
+.draggable-item {
+  @apply bg-yellow-500 my-2;
+}
+</style>
