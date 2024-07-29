@@ -10,7 +10,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "prepare": "husky"
   },
   "dependencies": {
     "i": "^0.3.7",
@@ -23,6 +24,8 @@
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.14.5",
@@ -33,6 +36,8 @@
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
+    "husky": "^9.1.3",
+    "lint-staged": "^15.2.7",
     "npm-run-all2": "^6.2.0",
     "postcss": "^8.4.39",
     "prettier": "^3.2.5",
@@ -41,5 +46,21 @@
     "typescript": "~5.4.0",
     "vite": "^5.3.1",
     "vue-tsc": "^2.0.21"
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "eslint --fix",
+      "prettier --parser=typescript --write"
+    ],
+    "*.{scss,sass,css}": [
+      "prettier --write"
+    ]
   }
 }

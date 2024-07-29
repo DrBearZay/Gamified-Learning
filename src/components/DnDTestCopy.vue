@@ -29,27 +29,14 @@
         </Draggable>
       </Container>
     </div>
-    <!-- <div style="margin-left: 50px;">
-      <Container
-        group-name="1"
-        :get-child-payload="getChildPayload3"
-        @drop="onDrop(items3, $event)"
-      >
-        <Draggable v-for="item in items3" :key="item.id">
-          <div class="draggable-item">
-            {{ item.data }}
-          </div>
-        </Draggable>
-      </Container>
-    </div> -->
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Container, Draggable } from 'vue3-smooth-dnd';
+import { ref } from 'vue'
+import { Container, Draggable } from 'vue3-smooth-dnd'
 
-// TODO item1里复制出来的id不能写死
+// item1里复制出来的id不能写死
 const items1 = ref([
   { id: 1, data: 'Princess Mononoke' },
   { id: 2, data: 'Spirited Away' },
@@ -64,34 +51,22 @@ const items2 = ref([
   { id: 4, data: "Howl's Moving Castle2" }
 ])
 
-const items3 = ref([
-  { id: 1, data: 'Princess Mononoke3' },
-  { id: 2, data: 'Spirited Away3' },
-  { id: 3, data: 'My Neighbor Totoro3' },
-  { id: 4, data: "Howl's Moving Castle3" }
-])
-
-// const onDrop = (collection: any, dropResult: any) => {
-//   console.log('onDrop')
-//   // collection = applyDrag(collection, dropResult)
-// }
-
 type dropResultType = {
   removedIndex: number
   addedIndex: number
-  payload: any
+  payload: string
 }
 const onDrop2 = (dropResult: dropResultType) => {
   console.log(dropResult)
   items2.value = applyDrag(items2.value, dropResult)
 }
 
-const applyDrag = (arr: any, dragResult: any) => {
+const applyDrag = (arr: { id: number; data: string }[], dragResult: any) => {
   const { removedIndex, addedIndex, payload } = dragResult
   if (removedIndex === null && addedIndex === null) return arr
 
   const result = [...arr]
-  let itemToAdd = payload
+  let itemToAdd = { id: arr.length + 1, data: payload }
 
   if (removedIndex !== null) {
     itemToAdd = result.splice(removedIndex, 1)[0]
@@ -105,13 +80,12 @@ const applyDrag = (arr: any, dragResult: any) => {
 }
 
 const getChildPayload1 = (index: number) => {
-  return items1.value[index]
+  console.log('111')
+  return items1.value[index].data
 }
 const getChildPayload2 = (index: number) => {
-  return items2.value[index]
-}
-const getChildPayload3 = (index: number) => {
-  return items3.value[index]
+  console.log('222')
+  return items2.value[index].data
 }
 </script>
 
