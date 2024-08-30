@@ -11,10 +11,10 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest'
-  },
-  rules: {
-    'no-unused-vars': 'warn',
-    'no-undef': 'warn',
-    'unused-imports/no-unused-imports': 'warn'
   }
+  // rules: {
+  //   'no-unused-vars': 'warn',
+  //   'no-undef': 'warn',
+  //   'unused-imports/no-unused-imports': 'warn'
+  // }
 }

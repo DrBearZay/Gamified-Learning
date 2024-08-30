@@ -28,3 +28,8 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# 自动导入相关文件
+components.d.ts
+auto-imports.d.ts
+.eslintrc-auto-import.json
