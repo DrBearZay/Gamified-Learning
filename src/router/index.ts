@@ -1,42 +1,62 @@
-import { useAccountStore } from '@/stores/account'
-import { createRouter, createWebHistory } from 'vue-router'
+import { useAccountStore } from '@/stores/account';
+import { createRouter, createWebHistory } from 'vue-router';
 
-const HomePage = () => import('@/views/HomePage.vue')
-const LoginPage = () => import('@/views/LoginPage.vue')
-const RegisterPage = () => import('@/views/RegisterPage.vue')
-const LevelSelect = () => import('@/views/main/GameLevelSelect.vue')
+const HomePage = () => import('@/views/HomePage.vue');
+const LoginPage = () => import('@/views/LoginPage.vue');
+const RegisterPage = () => import('@/views/RegisterPage.vue');
+const LevelSelect = () => import('@/views/main/GameLevelSelect.vue');
+const MyAccount = () => import('@/views/account/MyAccount.vue');
+const Account = () => import('@/views/account/Account.vue');
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      redirect: '/home',
     },
     {
       path: '/login',
       name: 'Login',
-      component: LoginPage
+      component: LoginPage,
     },
     {
       path: '/register',
       name: 'Register',
-      component: RegisterPage
+      component: RegisterPage,
     },
     {
       path: '/home',
       name: 'Home',
       component: HomePage,
+      redirect: { name: 'LevelSelect' },
       children: [
         {
           path: '/home/level-select',
           name: 'LevelSelect',
-          component: LevelSelect
-        }
-      ]
-    }
-  ]
-})
+          component: LevelSelect,
+        },
+        // {
+        //   path: '/home/account',
+        //   name: 'Account',
+        //   component: MyAccount,
+        // },
+      ],
+    },
+    {
+      path: '/account',
+      name: 'Account',
+      component: Account,
+      children: [
+        {
+          path: '/account/my-account',
+          name: 'MyAccount',
+          component: MyAccount,
+        },
+      ],
+    },
+  ],
+});
 
 // 开发时暂时不需要登录
 // router.beforeEach((to) => {
@@ -48,4 +68,4 @@ const router = createRouter({
 //   return true
 // })
 
-export default router
+export default router;

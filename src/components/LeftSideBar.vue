@@ -26,14 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import router from '@/router'
-
-const path = '/home'
-
-// 默认路由
-onMounted(() => {
-  router.replace({ path: path + '/level-select' })
-})
+const path = '/home';
 </script>
 
 <style lang="scss" scoped>

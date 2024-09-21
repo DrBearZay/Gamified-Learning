@@ -1,15 +1,9 @@
 <template>
-  <!-- <div class="flex gap-8 items-start">
-    <DnDTestCopy></DnDTestCopy>
-  </div> -->
   <el-container class="h-screen">
     <el-header class="p-0">
       <Header />
     </el-header>
-    <el-container class="h-full">
-      <el-aside width="200px">
-        <LeftSideBar class="h-full" />
-      </el-aside>
+    <el-container>
       <el-main class="bg-gray-300">
         <RouterView />
       </el-main>
@@ -18,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import LeftSideBar from '@/components/LeftSideBar.vue';
 import Header from '@/components/Header.vue';
 </script>
+
+<style lang="scss" scoped></style>
