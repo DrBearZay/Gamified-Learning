@@ -39,30 +39,27 @@ import { nanoid } from 'nanoid';
 import { ref } from 'vue';
 import { Container, Draggable } from 'vue3-smooth-dnd';
 
-type PayloadType = {
-  opr: string;
-  param?: number;
-};
 type InstructionType = {
   id: string | number;
   data: string;
-  payload: PayloadType;
+  opr: string;
+  param?: string | number;
 };
 // item1里复制出来的id不能写死
 // 可用指令
 const instructionList = ref<InstructionType[]>([
-  { id: 'Input', data: 'Input', payload: { opr: 'Input' } },
-  { id: 'Output', data: 'Output', payload: { opr: 'Output' } },
+  { id: 'Input', data: 'Input', opr: 'Input' },
+  { id: 'Output', data: 'Output', opr: 'Output' },
   // todo 可以通过颜色来区分同一组内的jump和distination
-  { id: 'Jump', data: 'Jump', payload: { opr: 'Jump' } },
+  { id: 'Jump', data: 'Jump', opr: 'Jump' },
   // { id: 'Destination', data: 'Destination' },
-  { id: 'Add', data: 'Add', payload: { opr: 'Add' } },
-  { id: 'Sub', data: 'Sub', payload: { opr: 'Sub' } },
+  { id: 'Add', data: 'Add', opr: 'Add' },
+  { id: 'Sub', data: 'Sub', opr: 'Sub' },
 ]);
 // 用户代码
 const userCodeList = ref<InstructionType[]>([
-  { id: 'Input', data: 'Input', payload: { opr: 'Input' } },
-  { id: 'Output', data: 'Output', payload: { opr: 'Output' } },
+  { id: 'Input', data: 'Input', opr: 'Input' },
+  { id: 'Output', data: 'Output', opr: 'Output' },
 ]);
 
 type dropResultType = {
