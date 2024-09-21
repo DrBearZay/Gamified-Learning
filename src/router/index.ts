@@ -7,6 +7,7 @@ const RegisterPage = () => import('@/views/RegisterPage.vue');
 const LevelSelect = () => import('@/views/main/GameLevelSelect.vue');
 const MyAccount = () => import('@/views/account/MyAccount.vue');
 const Account = () => import('@/views/account/Account.vue');
+const Game = () => import('@/views/main/Game.vue');
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +36,11 @@ const router = createRouter({
           path: '/home/level-select',
           name: 'LevelSelect',
           component: LevelSelect,
+        },
+        {
+          path: '/home/game',
+          name: 'Game',
+          component: Game,
         },
         // {
         //   path: '/home/account',
