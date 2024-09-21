@@ -68,34 +68,30 @@ const userCodeList = ref<InstructionType[]>([
 type dropResultType = {
   removedIndex: number;
   addedIndex: number;
-  payload: PayloadType;
+  payload: InstructionType;
 };
 const addInstruction = (dropResult: dropResultType) => {
   console.log(dropResult);
-  const { addedIndex, removedIndex, payload } = dropResult;
-  let instructionToAdd: InstructionType = {
-    data: payload.opr,
-    id: nanoid(),
-    payload,
-  };
+  const { addedIndex, removedIndex, payload: originInstruction } = dropResult;
   // todo 根据指令的opr在添加和删除时进行不同的操作
   // 删除指令
   if (removedIndex !== null) {
-    instructionToAdd = userCodeList.value.splice(removedIndex, 1)[0];
+    userCodeList.value.splice(removedIndex, 1)[0];
   }
   // 添加指令
   if (addedIndex !== null) {
+    const instructionToAdd = { ...originInstruction, id: nanoid() };
     userCodeList.value.splice(addedIndex, 0, instructionToAdd);
   }
 };
 
 const getAddPayload = (index: number) => {
   // console.log('add-instruction');
-  return instructionList.value[index].payload;
+  return instructionList.value[index];
 };
 const getSwapPayload = (index: number) => {
   // console.log('swap-instruction');
-  return userCodeList.value[index].payload;
+  return userCodeList.value[index];
 };
 </script>
 
