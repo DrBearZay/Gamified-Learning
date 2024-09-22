@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-full gap-4">
+  <div class="flex h-full gap-4 select-none">
     <div class="flex-1 flex flex-col gap-4 min-w-0">
       <ShowArea class="flex-1" />
       <OperationBoard />
