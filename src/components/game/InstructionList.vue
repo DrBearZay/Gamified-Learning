@@ -50,9 +50,6 @@
             >
               <el-option v-for="item in LocationList" :key="item" :label="item" :value="item" />
             </el-select>
-            <!-- <div v-if="Object.hasOwn(item, 'params')">
-              {{ item.param }}
-            </div> -->
           </div>
         </Draggable>
       </Container>
@@ -183,5 +180,8 @@ const addInstruction = (addedIndex: number, originInstruction: InstructionType) 
 }
 .draggable-item {
   @apply bg-yellow-500 my-2 p-1 cursor-move rounded-md shadow-md;
+}
+:deep(.el-select__wrapper) {
+  transition: none; /* 取消过渡效果 */
 }
 </style>
