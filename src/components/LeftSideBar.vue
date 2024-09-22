@@ -2,10 +2,10 @@
   <el-menu
     active-text-color="#ffd04b"
     background-color="#545c64"
-    class="el-menu-vertical-demo"
     :default-active="path + '/level-select'"
     text-color="#fff"
     router
+    class="w-[150px] flex-shrink-0"
   >
     <el-menu-item :index="path + '/level-select'">
       <span>关卡选择</span>

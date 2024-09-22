@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-yellow-600 flex justify-between items-center px-5 h-full shadow-lg">
+  <div class="bg-yellow-600 flex justify-between items-center px-5 h-[60px] shadow-lg">
     <div>平台名称</div>
     <el-dropdown placement="top-start">
       <el-button circle size="large"> 头像 </el-button>

@@ -119,6 +119,8 @@ const addLocation = () => {
   LocationList.value.push(newLabel);
   return newLabel;
 };
+// todo 通过点击L的方式直接选择jump的目的地
+// const selectLocation = ref(false)
 
 type dropResultType = {
   removedIndex: number;
