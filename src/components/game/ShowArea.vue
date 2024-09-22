@@ -1,5 +1,6 @@
 <template>
   <div class="bg-gray-200 rounded-lg shadow-lg p-4 flex flex-col gap-2">
+    <!-- 输入传送带 -->
     <div class="box-content border-[6px] border-black h-[60px] overflow-hidden flex items-center">
       <div
         class="w-[60px] h-[60px] flex items-center justify-center flex-shrink-0"
@@ -15,6 +16,7 @@
         </div>
       </div>
     </div>
+
     <div class="flex-1 flex items-center justify-center">floor</div>
     <div>output</div>
   </div>
