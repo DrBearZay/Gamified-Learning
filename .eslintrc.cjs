@@ -14,6 +14,7 @@ module.exports = {
   },
   rules: {
     'vue/multi-word-component-names': 'off',
+    // 'no-case-declarations': 'off',
     // 'no-unused-vars': 'warn',
     // 'no-undef': 'warn',
     // 'unused-imports/no-unused-imports': 'warn',
